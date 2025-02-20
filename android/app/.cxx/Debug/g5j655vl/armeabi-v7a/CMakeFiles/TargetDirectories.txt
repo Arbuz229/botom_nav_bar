@@ -1,0 +1,2 @@
+C:/vs_code_flutter/shell_route_2_0/android/app/.cxx/Debug/g5j655vl/armeabi-v7a/CMakeFiles/edit_cache.dir
+C:/vs_code_flutter/shell_route_2_0/android/app/.cxx/Debug/g5j655vl/armeabi-v7a/CMakeFiles/rebuild_cache.dir
