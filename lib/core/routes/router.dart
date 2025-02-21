@@ -6,7 +6,6 @@ import 'package:shell_route_2_0/features/home/presentation/home_screen.dart';
 import 'package:shell_route_2_0/features/profile/presentation/profile_screen.dart';
 import 'package:shell_route_2_0/features/settings/presentation/setting.dart';
 
-
 enum RouteNames {
   profile('/profile'),
   home('/home'),
@@ -15,13 +14,11 @@ enum RouteNames {
 
   final String path;
 
-const RouteNames(this.path);
+  const RouteNames(this.path);
 }
-
 
 final GoRouter router = GoRouter(
   initialLocation: '/home',
-
   routes: [
     ShellRoute(
       builder: (context, state, child) => AppScreen(child: child),
@@ -33,32 +30,43 @@ final GoRouter router = GoRouter(
             return const HomeScreen();
           },
         ),
-          GoRoute(
-            name: RouteNames.catalog.name,
-            path: RouteNames.catalog.path,
-            builder: (context, state) {
-              return const CatalogScreen();
-            },
-          ),
-          GoRoute(
+        GoRoute(
+          name: RouteNames.catalog.name,
+          path: RouteNames.catalog.path,
+          builder: (context, state) {
+            return const CatalogScreen();
+          },
+        ),
+        GoRoute(
             name: RouteNames.profile.name,
             path: RouteNames.profile.path,
             builder: (context, state) {
               return const ProfileScreen();
-            }
-          ),
+            }),
       ],
     ),
     GoRoute(
-      path: '/settings',
-      name: 'settings',
-      pageBuilder: (context, state) => CustomTransitionPage(
-        key: state.pageKey,
-        child: const SettingScreen(),
-        transitionsBuilder: (context, animation, secondaryAnimation, child) {
-          return FadeTransition(opacity: animation, child: child);
-        },
-      ),
-    ),
+        path: RouteNames.settings.path,
+        name: RouteNames.settings.name,
+        builder: (context, state) {
+          return SettingScreen();
+        }
+        // pageBuilder: (context, state) => CustomTransitionPage(
+        //   key: state.pageKey,
+        //   child: const SettingScreen(),
+        //   transitionsBuilder: (context, animation, secondaryAnimation, child) {
+        //     return SlideTransition(
+        //       position: Tween<Offset>(
+        //         begin: const Offset(0, 1),
+        //         end: Offset.zero, // Завершаем в обычном положении
+        //       ).animate(CurvedAnimation(
+        //         parent: animation,
+        //         curve: Curves.decelerate, // Плавность движения
+        //       )),
+        //       child: child,
+        //     );
+        //   },
+        // ),
+        ),
   ],
 );

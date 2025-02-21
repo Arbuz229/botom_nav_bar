@@ -1,4 +1,5 @@
 import 'dart:ui';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:go_router/go_router.dart';
@@ -46,7 +47,7 @@ class _AppScreenState extends State<AppScreen> {
           AnimatedPositioned(
             duration: const Duration(milliseconds: 500),
             curve: Curves.easeInOut,
-            bottom: isSettingsPage ? -bottomBarHeight : 0, // Уезжает вниз
+            bottom: isSettingsPage ? -bottomBarHeight : 0,
             left: 0,
             right: 0,
             child: BottomNavigationBarWidget(),
@@ -58,9 +59,11 @@ class _AppScreenState extends State<AppScreen> {
 }
 
 class BottomNavigationBarWidget extends StatelessWidget {
+  const BottomNavigationBarWidget({super.key});
+
   @override
   Widget build(BuildContext context) {
-    Color bottomNavBarColor = Colors.black54.withOpacity(0.75);
+    Color bottomNavBarColor = Colors.black54.withValues(alpha: 0.75);
 
     return ClipRRect(
       child: BackdropFilter(
@@ -92,7 +95,9 @@ class BottomNavigationBarWidget extends StatelessWidget {
               unselectedFontSize: 12,
               items: const [
                 BottomNavigationBarItem(icon: Icon(Icons.home_outlined), label: 'Home', activeIcon: Icon(Icons.home)),
-                BottomNavigationBarItem(icon: Icon(Icons.search), label: 'Catalog'),
+                BottomNavigationBarItem(icon: Icon(CupertinoIcons.home), label: 'Home', activeIcon: Icon(CupertinoIcons.house_fill)),
+
+                BottomNavigationBarItem(icon: Icon(CupertinoIcons.cart), label: 'Catalog', activeIcon: Icon(CupertinoIcons.cart_fill)),
                 BottomNavigationBarItem(icon: Icon(Icons.person_outlined), label: 'Profile', activeIcon: Icon(Icons.person)),
               ],
             ),

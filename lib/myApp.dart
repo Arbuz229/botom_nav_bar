@@ -1,3 +1,4 @@
+import 'package:animations/animations.dart';
 import 'package:flutter/material.dart';
 import 'package:shell_route_2_0/core/routes/router.dart';
 
@@ -17,6 +18,14 @@ class MyApp extends StatelessWidget {
         ),
         textTheme: TextTheme(
           bodyMedium: TextStyle(color: Colors.white)
+        ),
+        pageTransitionsTheme: PageTransitionsTheme(
+          builders: <TargetPlatform, PageTransitionsBuilder>{
+            TargetPlatform.android: SharedAxisPageTransitionsBuilder(
+              transitionType: SharedAxisTransitionType.vertical,
+            ),
+            TargetPlatform.iOS: CupertinoPageTransitionsBuilder(),
+          },
         ),
         scaffoldBackgroundColor: Colors.white24,
         primarySwatch: Colors.blue,
